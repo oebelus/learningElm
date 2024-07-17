@@ -15,13 +15,13 @@ main =
     }
 
 -- MODEL
-type alias Model content = { content : string }
+type alias Model = { content : String }
 
 init : Model
 init = { content = "" }
 
 -- UPDATE
-type Msg string = Change 
+type Msg = Change String 
 
 update : Msg -> Model -> Model
 update msg model = 
@@ -36,4 +36,5 @@ view model =
     div []
         [ input [ placeholder "Text to reverse", value model.content, onInput Change ] []
         , div [] [ text (String.reverse model.content) ]
+        , div [] [ text ( String.fromInt (String.length model.content) ) ]
         ]
