@@ -28,7 +28,7 @@ init = Model "" ""
 
 type Msg 
     = ToFahrenheit String
-    | ToCelcius String
+    | Tocelsius String
     | ToMeters String
 
 
@@ -38,8 +38,8 @@ update msg model =
         ToFahrenheit fahrenheit ->
             { model | temperature = fahrenheit }
 
-        ToCelcius celcius ->
-            { model | temperature = celcius }
+        Tocelsius celsius ->
+            { model | temperature = celsius }
 
         ToMeters meters ->
             { model | distance = meters }
@@ -48,7 +48,7 @@ view : Model -> Html Msg
 view model =
     div []
         [ case String.toFloat model.temperature of 
-            Just celcius -> 
+            Just celsius -> 
                 div [] 
                 [ input 
                     [ type_ "number", 
@@ -56,7 +56,7 @@ view model =
                     onInput ToFahrenheit ] 
                     [],
                     text "°C = "
-                    , span [ style "color" "blue" ] [ text (String.fromFloat (celcius * 1.8 + 32)) ]
+                    , span [ style "color" "blue" ] [ text (String.fromFloat (celsius * 1.8 + 32)) ]
                 ]
             Nothing -> 
                 div []

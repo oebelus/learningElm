@@ -123,6 +123,13 @@ view model =
 
 The view takes a model as an argument and returns HTML;
 
+## MY SOLUTIONS LINKS
+
+- [Buttons](https://github.com/oebelus/learningElm/tree/main/buttons)
+- [Forms](https://github.com/oebelus/learningElm/tree/main/forms)
+- [Text Fields](https://github.com/oebelus/learningElm/tree/main/text-fields)
+- [Fahrenheit to Celsius](https://github.com/oebelus/learningElm/tree/main/toFahrenheit)
+
 ## COMPILING TO JS
 
 Running elm make produces HTML files by default. This produces `index.html`;
