@@ -180,12 +180,7 @@ type Msg = GotText ( Result Http.Error String )
 - `subscription`:
   The other new thing in this program is the subscription function. It lets you look at the Model and decide if you want to subscribe to certain information. In our example, we say S`ub.none` to indicate that we do not need to subscribe to anything. <br>
 
-## MY SOLUTIONS LINKS
-
-- [Buttons](https://github.com/oebelus/learningElm/tree/main/buttons)
-- [Forms](https://github.com/oebelus/learningElm/tree/main/forms)
-- [Text Fields](https://github.com/oebelus/learningElm/tree/main/text-fields)
-- [Fahrenheit to Celsius](https://github.com/oebelus/learningElm/tree/main/toFahrenheit) - Maybe
+2. JSON
 
 ## COMPILING TO JS
 
@@ -208,10 +203,15 @@ var app = Elm.Main.init({
 });
 ```
 
+## MY SOLUTIONS LINKS
+
+- [Buttons](https://github.com/oebelus/learningElm/tree/main/buttons)
+- [Forms](https://github.com/oebelus/learningElm/tree/main/forms)
+- [Text Fields](https://github.com/oebelus/learningElm/tree/main/text-fields)
+- [Fahrenheit to Celsius](https://github.com/oebelus/learningElm/tree/main/toFahrenheit) - Maybe
+
 ## LIST OF THINGS I LIKE ABOUT ELM:
 
--> The cute friendly error messages that make me smile everytime
-
--> The concise documentation
-
--> The simple syntax
+-> The cute friendly error messages that make me smile everytime <br>
+-> The concise documentation <br>
+-> The simple syntax <br>

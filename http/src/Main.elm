@@ -1,9 +1,11 @@
+module Main exposing (..)
+
 import Browser
 import Html exposing (..)
 import Http
 
 
-main : Program flags Model Msg
+main : Program () Model Msg
 main =
     Browser.element
         { init = init
