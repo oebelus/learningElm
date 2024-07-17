@@ -1,10 +1,13 @@
-module Main exposing (main)
+module Main exposing (..)
 
 import Browser
 import Html exposing (..)
+import Html.Events exposing (onClick)
+import Html.Attributes exposing (style)
+import Http
+import Json.Decode exposing (Decoder, map4, field, int, string)
 
-
-main : Program flags Model Msg
+main : Program () Model Msg
 main =
     Browser.element
         { init = init
@@ -14,30 +17,50 @@ main =
         }
 
 
-type alias Model =
-    { property : Int
-    , property2 : String
+type Model 
+    = Failure
+    | Loading
+    | Success Quote
+
+type alias Quote = 
+    { quote : String
+    , source : String
+    , author : String
+    , year: Int 
     }
 
 
-init : flags -> ( Model, Cmd Msg )
-init flags =
-    ( Model 0 "modelInitialValue2", Cmd.none )
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( Loading
+    , Http.get
+        { url = "https://elm-lang.org/api/random-quotes"
+        , expect = Http.expectJson GotQuote quoteDecoder }
+    )
 
 
 type Msg
-    = Msg1
-    | Msg2
+    = MorePlease
+    | GotQuote (Result Http.Error Quote)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Msg1 ->
-            ( model, Cmd.none )
+        MorePlease ->
+            ( Loading
+            , Http.get
+                { url = "https://elm-lang.org/api/random-quotes"
+                , expect = Http.expectJson GotQuote quoteDecoder }
+            )
 
-        Msg2 ->
-            ( model, Cmd.none )
+        GotQuote result -> 
+            case result of
+                Ok quote ->
+                    (Success quote, Cmd.none)
+                
+                Err _ -> 
+                    (Failure, Cmd.none)
 
 
 subscriptions : Model -> Sub Msg
@@ -47,5 +70,29 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ text "New Element" ]
+    case model of 
+        Failure ->
+            div []
+                [ text "I could not load a random quote for some reason. "
+                , button [ onClick MorePlease ] [ text "Try Again!" ] ]
+
+        Loading -> 
+            text "Loading..."
+
+        Success quote ->
+            div []
+                [ button [ onClick MorePlease, style "display" "block" ] [ text "More Please!" ] 
+                , blockquote [] [ text quote.quote ]
+                , p [ style "text-align" "right" ]
+                    [ text "_ "
+                    , cite [] [ text quote.source ]
+                    , text (" by " ++ quote.author ++ " (" ++ String.fromInt quote.year ++ ")") ]
+                ]
+
+quoteDecoder : Decoder Quote
+quoteDecoder = 
+    map4 Quote
+        (field "quote" string)
+        (field "source" string)
+        (field "author" string)
+        (field "year" int)
