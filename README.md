@@ -182,6 +182,18 @@ type Msg = GotText ( Result Http.Error String )
 
 2. JSON
 
+3. Random
+
+```elm
+usuallyTrue : Random.Generator Bool
+usuallyTrue =
+  Random.weighted (80, True) [ (20, False) ]
+```
+
+-> It will produce a Bool, true 80% of the time and false 20% of the time.<br>
+-> Mapping in Random.generate: When you use Random.generate, you provide a function that translates the generated value into a message (Msg). This function takes the generated value (of type a) and adapts it to fit the expected message type (Msg).<br>
+-> Using identity: In the update function, if you have a generator (generator) that outputs a tuple (Numbers, Numbers), you can directly convert this tuple into a Msg type (NewFaces Numbers Numbers) using identity. identity simply passes through its argument unchanged, making it suitable for situations where you want to use the generated value without alteration.
+
 ## COMPILING TO JS
 
 Running elm make produces HTML files by default. This produces `index.html`;
