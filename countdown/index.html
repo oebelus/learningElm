@@ -7917,6 +7917,19 @@ var $rtfeldman$elm_css$Css$hex = function (str) {
 };
 var $rtfeldman$elm_css$Css$hidden = {borderStyle: $rtfeldman$elm_css$Css$Structure$Compatible, overflow: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'hidden', visibility: $rtfeldman$elm_css$Css$Structure$Compatible};
 var $rtfeldman$elm_css$Html$Styled$img = $rtfeldman$elm_css$Html$Styled$node('img');
+var $elm$core$Basics$sqrt = _Basics_sqrt;
+var $author$project$Main$isPrime = function (n) {
+	return (n < 2) ? false : A2(
+		$elm$core$List$all,
+		function (i) {
+			return !(!A2($elm$core$Basics$modBy, i, n));
+		},
+		A2(
+			$elm$core$List$range,
+			2,
+			$elm$core$Basics$floor(
+				$elm$core$Basics$sqrt(n))));
+};
 var $rtfeldman$elm_css$Css$justifyContent = function (fn) {
 	return A3(
 		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
@@ -8572,9 +8585,13 @@ var $rtfeldman$elm_css$Css$width = $rtfeldman$elm_css$Css$prop1('width');
 var $author$project$Main$view = function (model) {
 	var remaining = $elm$time$Time$posixToMillis(model.targetTime) - $elm$time$Time$posixToMillis(model.currentTime);
 	var seconds = A2($elm$core$Basics$modBy, 60, (remaining / 1000) | 0);
+	var secondsColor = $author$project$Main$isPrime(seconds) ? $rtfeldman$elm_css$Css$hex('000FF') : $rtfeldman$elm_css$Css$hex('FFFFFF');
 	var minutes = A2($elm$core$Basics$modBy, 60, (((remaining / 1000) | 0) / 60) | 0);
+	var minutesColor = $author$project$Main$isPrime(minutes) ? $rtfeldman$elm_css$Css$hex('000FF') : $rtfeldman$elm_css$Css$hex('FFFFFF');
 	var hours = ((((((((remaining / 1000) | 0) / 60) | 0) / 60) | 0) / 60) | 0) + 12;
+	var hoursColor = $author$project$Main$isPrime(hours) ? $rtfeldman$elm_css$Css$hex('000FF') : $rtfeldman$elm_css$Css$hex('FFFFFF');
 	var days = (remaining / (((24 * 60) * 60) * 1000)) | 0;
+	var daysColor = $author$project$Main$isPrime(days) ? $rtfeldman$elm_css$Css$hex('000FF') : $rtfeldman$elm_css$Css$hex('FFFFFF');
 	return $rtfeldman$elm_css$Html$Styled$toUnstyled(
 		A2(
 			$rtfeldman$elm_css$Html$Styled$div,
@@ -8682,8 +8699,7 @@ var $author$project$Main$view = function (model) {
 											$rtfeldman$elm_css$Css$marginRight(
 											$rtfeldman$elm_css$Css$px(20)),
 											$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-											$rtfeldman$elm_css$Css$color(
-											$rtfeldman$elm_css$Css$hex('ffffff'))
+											$rtfeldman$elm_css$Css$color(daysColor)
 										]))
 								]),
 							_List_fromArray(
@@ -8701,8 +8717,7 @@ var $author$project$Main$view = function (model) {
 											$rtfeldman$elm_css$Css$marginRight(
 											$rtfeldman$elm_css$Css$px(20)),
 											$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-											$rtfeldman$elm_css$Css$color(
-											$rtfeldman$elm_css$Css$hex('ffffff'))
+											$rtfeldman$elm_css$Css$color(hoursColor)
 										]))
 								]),
 							_List_fromArray(
@@ -8720,8 +8735,7 @@ var $author$project$Main$view = function (model) {
 											$rtfeldman$elm_css$Css$marginRight(
 											$rtfeldman$elm_css$Css$px(20)),
 											$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-											$rtfeldman$elm_css$Css$color(
-											$rtfeldman$elm_css$Css$hex('ffffff'))
+											$rtfeldman$elm_css$Css$color(minutesColor)
 										]))
 								]),
 							_List_fromArray(
@@ -8739,8 +8753,7 @@ var $author$project$Main$view = function (model) {
 											$rtfeldman$elm_css$Css$marginRight(
 											$rtfeldman$elm_css$Css$px(20)),
 											$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-											$rtfeldman$elm_css$Css$color(
-											$rtfeldman$elm_css$Css$hex('ffffff'))
+											$rtfeldman$elm_css$Css$color(secondsColor)
 										]))
 								]),
 							_List_fromArray(
@@ -8759,9 +8772,9 @@ var $author$project$Main$view = function (model) {
 								[
 									$rtfeldman$elm_css$Css$display($rtfeldman$elm_css$Css$block),
 									$rtfeldman$elm_css$Css$width(
-									$rtfeldman$elm_css$Css$px(600)),
+									$rtfeldman$elm_css$Css$px(650)),
 									$rtfeldman$elm_css$Css$height(
-									$rtfeldman$elm_css$Css$px(600))
+									$rtfeldman$elm_css$Css$px(650))
 								]))
 						]),
 					_List_Nil)
