@@ -89,5 +89,5 @@ view model =
                 , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text (" Minutes: " ++ String.fromInt minutes ++ ". ") ]
                 , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text (" Seconds: " ++ String.fromInt seconds ++ ". ") ]
                 ]
-                , Html.Styled.img [src "./nge.png", css [ display block, width (px 600), height (px 600) ]] []
+                , Html.Styled.img [src "../public/nge.png", css [ display block, width (px 600), height (px 600) ]] []
             ]
