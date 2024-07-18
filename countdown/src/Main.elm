@@ -79,15 +79,15 @@ view model =
                     , justifyContent center
                     , alignItems center
                     , textAlign center
-                    , border3 (px 2) solid (hex "#80B656")
                     , borderRadius (px 10)
-                    , margin4 (px 100) (px 200) (px 15) (px 200)
-                    , padding2 (px 40) (px 20) ]
+                    , border3 (px 1) (solid) (hex "ffffff")
+                    , margin4 (px 100) (px 50) (px 15) (px 50)
+                    , padding2 (px 20) (px 20) ]
                 ]
-                [ Html.Styled.div [ css [ marginRight (px 20), textAlign center ] ] [ Html.Styled.text ("Days: " ++ String.fromInt days ++ ". ") ]
-                , Html.Styled.div [ css [ marginRight (px 20), textAlign center ] ] [ Html.Styled.text (" Hours: " ++ String.fromInt hours ++ ". ") ]
-                , Html.Styled.div [ css [ marginRight (px 20), textAlign center ] ] [ Html.Styled.text (" Minutes: " ++ String.fromInt minutes ++ ". ") ]
-                , Html.Styled.div [ css [ marginRight (px 20), textAlign center ] ] [ Html.Styled.text (" Seconds: " ++ String.fromInt seconds ++ ". ") ]
+                [ Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text ("Days: " ++ String.fromInt days ++ ". ") ]
+                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text (" Hours: " ++ String.fromInt hours ++ ". ") ]
+                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text (" Minutes: " ++ String.fromInt minutes ++ ". ") ]
+                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text (" Seconds: " ++ String.fromInt seconds ++ ". ") ]
                 ]
                 , Html.Styled.img [src "./nge.png", css [ display block, width (px 600), height (px 600) ]] []
             ]
