@@ -194,6 +194,14 @@ usuallyTrue =
 -> Mapping in Random.generate: When you use Random.generate, you provide a function that translates the generated value into a message (Msg). This function takes the generated value (of type a) and adapts it to fit the expected message type (Msg).<br>
 -> Using identity: In the update function, if you have a generator (generator) that outputs a tuple (Numbers, Numbers), you can directly convert this tuple into a Msg type (NewFaces Numbers Numbers) using identity. identity simply passes through its argument unchanged, making it suitable for situations where you want to use the generated value without alteration.
 
+4. Time
+   To work with time, we need 3 concepts:
+
+- Human time (clocks);
+- POSIX time: seconds elapsed since some moment (1970);
+- Time Zones
+  -> We'll use `Time.Posix` and `Time.Zone`;
+
 ## COMPILING TO JS
 
 Running elm make produces HTML files by default. This produces `index.html`;
