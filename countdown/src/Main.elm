@@ -4,12 +4,10 @@ import Browser
 import Html exposing (..)
 import Time 
 import Task
-import Html.Attributes exposing (style)
 import Css exposing (..)
 import Html
 import Html.Styled exposing (..)
-import Html.Styled.Attributes exposing (css, href, src)
-import Html.Styled.Events exposing (onClick)
+import Html.Styled.Attributes exposing (css, src)
 
 main : Program () Model Msg
 main =
@@ -58,6 +56,30 @@ view model =
             modBy 60 (remaining // 1000 // 60)
         seconds =
             modBy 60 (remaining // 1000)
+        -- Determine colors based on primality
+        daysColor =
+            if isPrime days then
+                hex "000FF"
+            else
+                hex "FFFFFF"
+
+        hoursColor =
+            if isPrime hours then
+                hex "000FF"
+            else
+                hex "FFFFFF"
+
+        minutesColor =
+            if isPrime minutes then
+                hex "000FF"
+            else
+                hex "FFFFFF"
+
+        secondsColor =
+            if isPrime seconds then
+                hex "000FF"
+            else
+                hex "FFFFFF"
     in 
         Html.Styled.toUnstyled <|
         Html.Styled.div [ css
@@ -84,10 +106,17 @@ view model =
                     , margin4 (px 100) (px 50) (px 15) (px 50)
                     , padding2 (px 20) (px 20) ]
                 ]
-                [ Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text ("Days: " ++ String.fromInt days ++ ". ") ]
-                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text (" Hours: " ++ String.fromInt hours ++ ". ") ]
-                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text (" Minutes: " ++ String.fromInt minutes ++ ". ") ]
-                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color (hex "ffffff") ] ] [ Html.Styled.text (" Seconds: " ++ String.fromInt seconds ++ ". ") ]
+                [ Html.Styled.div [ css [ marginRight (px 20), textAlign center, color daysColor ] ] [ Html.Styled.text ("Days: " ++ String.fromInt days ++ ". ") ]
+                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color hoursColor ] ] [ Html.Styled.text (" Hours: " ++ String.fromInt hours ++ ". ") ]
+                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color minutesColor ] ] [ Html.Styled.text (" Minutes: " ++ String.fromInt minutes ++ ". ") ]
+                , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color secondsColor ] ] [ Html.Styled.text (" Seconds: " ++ String.fromInt seconds ++ ". ") ]
                 ]
-                , Html.Styled.img [src "../nge.png", css [ display block, width (px 600), height (px 600) ]] []
+                , Html.Styled.img [src "../nge.png", css [ display block, width (px 650), height (px 650) ]] []
             ]
+
+isPrime : Int -> Bool
+isPrime n =
+    if n < 2 then
+        False
+    else
+        List.all (\i -> modBy i n /= 0) (List.range 2 (Basics.sqrt (toFloat n) |> floor))
