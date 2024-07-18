@@ -225,10 +225,13 @@ var app = Elm.Main.init({
 
 ## MY SOLUTIONS LINKS
 
-- [Buttons](https://github.com/oebelus/learningElm/tree/main/buttons)
-- [Forms](https://github.com/oebelus/learningElm/tree/main/forms)
-- [Text Fields](https://github.com/oebelus/learningElm/tree/main/text-fields)
-- [Fahrenheit to Celsius](https://github.com/oebelus/learningElm/tree/main/toFahrenheit) - Maybe
+- [Buttons](https://github.com/oebelus/learningElm/tree/main/demos/buttons)
+- [Forms](https://github.com/oebelus/learningElm/tree/main/demos/forms)
+- [Text Fields](https://github.com/oebelus/learningElm/tree/main/demos/text-fields)
+- [Fahrenheit to Celsius](https://github.com/oebelus/learningElm/tree/main/demos/toFahrenheit) - Maybe
+- [HTTP](https://github.com/oebelus/learningElm/tree/main/demos/http)
+- [JSON](https://github.com/oebelus/learningElm/tree/main/demos/json)
+- [Random](https://github.com/oebelus/learningElm/tree/main/demos/random)
 
 ## LIST OF THINGS I LIKE ABOUT ELM:
 
