@@ -27,7 +27,7 @@ type alias Model = {
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    (Model (Time.millisToPosix 0) (Time.millisToPosix 1721689200000), Task.perform Tick Time.now )
+    (Model (Time.millisToPosix 0) (Time.millisToPosix 1753225200000), Task.perform Tick Time.now )
 
 
 type Msg
