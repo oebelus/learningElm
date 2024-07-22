@@ -91,6 +91,7 @@ view model =
             , color (hex "00FFFF")
             , fontFamily monospace
             , overflow hidden
+            , position relative
             ] ] 
             [
                 Html.Styled.div [ css [ position relative, top (px 120), textAlign center, color (hex "000FF") ] ] [ Html.Styled.text ("Time Left Until Ayman's Birthday :3") ] 
@@ -111,7 +112,7 @@ view model =
                 , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color minutesColor ] ] [ Html.Styled.text (" Minutes: " ++ String.fromInt minutes ++ ". ") ]
                 , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color secondsColor ] ] [ Html.Styled.text (" Seconds: " ++ String.fromInt seconds ++ ". ") ]
                 ]
-                , Html.Styled.img [src "./nge.png", css [ display block, width (px 650), height (px 650) ]] []
+                , Html.Styled.img [src "../nge.png", css [ display block, width (px 650), height (px 650) ]] []
             ]
 
 isPrime : Int -> Bool
