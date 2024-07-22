@@ -62,7 +62,6 @@ view model =
                 hex "000FF"
             else
                 hex "FFFFFF"
-
         hoursColor =
             if isPrime hours then
                 hex "000FF"
@@ -80,6 +79,23 @@ view model =
                 hex "000FF"
             else
                 hex "FFFFFF"
+
+        ---birdthay
+        birthTimestampInMillis : Int
+        birthTimestampInMillis =
+            932688000 * 1000
+
+        currentMillis : Int
+        currentMillis =
+            Time.posixToMillis model.currentTime
+
+        ageMillis : Int
+        ageMillis =
+            currentMillis - birthTimestampInMillis
+
+        year : Int
+        year =
+            (ageMillis // (1000 * 60 * 60 * 24 * 365))
     in 
         Html.Styled.toUnstyled <|
         Html.Styled.div [ css
@@ -94,7 +110,7 @@ view model =
             , position relative
             ] ] 
             [
-                Html.Styled.div [ css [ position relative, top (px 120), textAlign center, color (hex "000FF") ] ] [ Html.Styled.text ("Time Left Until Ayman's Birthday :3") ] 
+                Html.Styled.div [ css [ position relative, top (px 120), textAlign center, color (hex "000FF") ] ] [ Html.Styled.text ("Time Left Until Ayman's " ++ String.fromInt year ++ "th Birthday :3") ] 
                 , Html.Styled.img [src "https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif", css [ margin2 (px 10) (auto), textAlign center, display block ]] []
                 , Html.Styled.div 
                 [ css 
