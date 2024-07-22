@@ -8594,9 +8594,8 @@ var $author$project$Main$view = function (model) {
 	var hoursColor = $author$project$Main$isPrime(hours) ? $rtfeldman$elm_css$Css$hex('000FF') : $rtfeldman$elm_css$Css$hex('FFFFFF');
 	var days = (remaining / (((24 * 60) * 60) * 1000)) | 0;
 	var daysColor = $author$project$Main$isPrime(days) ? $rtfeldman$elm_css$Css$hex('000FF') : $rtfeldman$elm_css$Css$hex('FFFFFF');
-	var currentMillis = $elm$time$Time$posixToMillis(model.currentTime);
 	var birthTimestampInMillis = 932688000 * 1000;
-	var ageMillis = currentMillis - birthTimestampInMillis;
+	var ageMillis = $elm$time$Time$posixToMillis(model.targetTime) - birthTimestampInMillis;
 	var year = (ageMillis / ((((1000 * 60) * 60) * 24) * 365)) | 0;
 	return $rtfeldman$elm_css$Html$Styled$toUnstyled(
 		A2(

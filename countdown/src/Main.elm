@@ -85,13 +85,9 @@ view model =
         birthTimestampInMillis =
             932688000 * 1000
 
-        currentMillis : Int
-        currentMillis =
-            Time.posixToMillis model.currentTime
-
         ageMillis : Int
         ageMillis =
-            currentMillis - birthTimestampInMillis
+            Time.posixToMillis model.targetTime - birthTimestampInMillis
 
         year : Int
         year =
