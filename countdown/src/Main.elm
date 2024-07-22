@@ -128,7 +128,7 @@ view model =
                 , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color minutesColor ] ] [ Html.Styled.text (" Minutes: " ++ String.fromInt minutes ++ ". ") ]
                 , Html.Styled.div [ css [ marginRight (px 20), textAlign center, color secondsColor ] ] [ Html.Styled.text (" Seconds: " ++ String.fromInt seconds ++ ". ") ]
                 ]
-                , Html.Styled.img [src "../nge.png", css [ display block, width (px 650), height (px 650) ]] []
+                , Html.Styled.img [src "../nge.png", css [ display block, position absolute, bottom (px 0), width (px 650), height (px 650) ]] []
             ]
 
 isPrime : Int -> Bool
