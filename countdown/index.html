@@ -8592,6 +8592,10 @@ var $author$project$Main$view = function (model) {
 	var hoursColor = $author$project$Main$isPrime(hours) ? $rtfeldman$elm_css$Css$hex('000FF') : $rtfeldman$elm_css$Css$hex('FFFFFF');
 	var days = (remaining / (((24 * 60) * 60) * 1000)) | 0;
 	var daysColor = $author$project$Main$isPrime(days) ? $rtfeldman$elm_css$Css$hex('000FF') : $rtfeldman$elm_css$Css$hex('FFFFFF');
+	var currentMillis = $elm$time$Time$posixToMillis(model.currentTime);
+	var birthTimestampInMillis = 932688000 * 1000;
+	var ageMillis = currentMillis - birthTimestampInMillis;
+	var year = (ageMillis / ((((1000 * 60) * 60) * 24) * 365)) | 0;
 	return $rtfeldman$elm_css$Html$Styled$toUnstyled(
 		A2(
 			$rtfeldman$elm_css$Html$Styled$div,
@@ -8616,7 +8620,8 @@ var $author$project$Main$view = function (model) {
 							$rtfeldman$elm_css$Css$color(
 							$rtfeldman$elm_css$Css$hex('00FFFF')),
 							$rtfeldman$elm_css$Css$fontFamily($rtfeldman$elm_css$Css$monospace),
-							$rtfeldman$elm_css$Css$overflow($rtfeldman$elm_css$Css$hidden)
+							$rtfeldman$elm_css$Css$overflow($rtfeldman$elm_css$Css$hidden),
+							$rtfeldman$elm_css$Css$position($rtfeldman$elm_css$Css$relative)
 						]))
 				]),
 			_List_fromArray(
@@ -8638,7 +8643,8 @@ var $author$project$Main$view = function (model) {
 						]),
 					_List_fromArray(
 						[
-							$rtfeldman$elm_css$Html$Styled$text('Time Left Until Ayman\'s Birthday :3')
+							$rtfeldman$elm_css$Html$Styled$text(
+							'Time Left Until Ayman\'s ' + ($elm$core$String$fromInt(year) + 'th Birthday :3'))
 						])),
 					A2(
 					$rtfeldman$elm_css$Html$Styled$img,
