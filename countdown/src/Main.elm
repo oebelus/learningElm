@@ -51,7 +51,7 @@ view model =
         days =
             remaining // (24 * 60 * 60 * 1000)
         hours =
-            modBy 60 (remaining // 1000 // 60 // 60)
+            modBy 24 (remaining // (1000 * 60 * 60 ))
         minutes = 
             modBy 60 (remaining // 1000 // 60)
         seconds =
